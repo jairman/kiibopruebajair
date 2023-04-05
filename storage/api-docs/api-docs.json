@@ -1,0 +1,335 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Kiibo Prueba - Jair Quinto - tokinmym2@gmail.com",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000"
+        }
+    ],
+    "paths": {
+        "/api/usuarios": {
+            "get": {
+                "tags": [
+                    "Panel Administrativo"
+                ],
+                "summary": "Mostrar el listado de usuarios",
+                "description": "Mostramos el listado de Usuarios.",
+                "operationId": "348a650ab53369eaff1e319191184a5b",
+                "responses": {
+                    "200": {
+                        "description": "Se ha encontrado la siguiente información"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Panel Administrativo"
+                ],
+                "summary": "Registrar un Usuario ",
+                "description": "se envia el nombre de la tarea",
+                "operationId": "25dc775588d2e73b509bcb375d425b27",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "text"
+                                    },
+                                    "email": {
+                                        "type": "email"
+                                    },
+                                    "password": {
+                                        "type": "password"
+                                    },
+                                    "c_password": {
+                                        "type": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario creado con exito"
+                    },
+                    "default": {
+                        "description": "No se pudo crear  el Usuario."
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "User Login",
+                "description": "Login User Here",
+                "operationId": "authLogin",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "email"
+                                    },
+                                    "password": {
+                                        "type": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Login Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Login Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/tareas": {
+            "get": {
+                "tags": [
+                    "Tareas"
+                ],
+                "summary": "Ver Tareas ",
+                "description": "Display a listing of the resource.",
+                "operationId": "83164ec7ed63bf3c454a58a4ad170d17",
+                "responses": {
+                    "200": {
+                        "description": "Se ha encontrado la siguiente información'"
+                    },
+                    "default": {
+                        "description": "No se encontró información."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Tareas"
+                ],
+                "summary": "Registrar Tarea ",
+                "description": "se envia el nombre de la tarea",
+                "operationId": "707d93d60b6775a7083f3d143845e06d",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Tarea creada con exito"
+                    },
+                    "default": {
+                        "description": "No se pudo crear  la tarea."
+                    }
+                }
+            }
+        },
+        "/api/tareas/{id}": {
+            "get": {
+                "tags": [
+                    "Tareas"
+                ],
+                "summary": "Ver Tarea ",
+                "description": "se envia el id de la tarea",
+                "operationId": "07132f480ae41c95b02b358b7c388daa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parámetro necesario (Id de Tarea)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Introduce un número de id de la tarea.",
+                                "value": "5"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se ha encontrado la siguiente información'"
+                    },
+                    "default": {
+                        "description": "No se encontró información."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Tareas"
+                ],
+                "summary": "Editar Tarea ",
+                "description": "",
+                "operationId": "a5a129648cfde7d05bf5d1b3389b7c88",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parámetro necesario (Id de Tarea)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Introduce un número de id de la tarea.",
+                                "value": "5"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "nombre": {
+                                        "type": "text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Se ha actualizado la información de la tarea seleccionado"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error inesperado al editar los datos."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Tareas"
+                ],
+                "summary": "Eliminar Tarea ",
+                "description": "",
+                "operationId": "46884236f983dd933963170e945a0819",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parámetro necesario (Id de Tarea)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Introduce un número de id de la tarea.",
+                                "value": "5"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tarea eliminada con éxito"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error inesperado ."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "A short description for oauth2 security",
+                "scheme": "bearer",
+                "in": "header",
+                "bearerAuth": "bearerAuth",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ]
+}

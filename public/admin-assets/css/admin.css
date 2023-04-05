@@ -1,0 +1,19 @@
+.botonadmin {
+    height: 32px;
+    padding: 0 8px;
+    font-size: 1rem;
+    line-height: 30px;
+}
+.checkbox-bird{
+    float: left;
+    margin-right: 10px;
+}
+.table-responsive .bootstrap-table {
+    min-height: 370px;
+}
+.materialboxed.active{
+    max-width: 100% !important;
+}
+.iconpicker-search{
+    width: auto !important
+}
