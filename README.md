@@ -7,4 +7,4 @@
 
 ## Comando Test ---- ./vendor/bin/phpunit --filter TareaTest
 
-# Laravel API = Stunt + Jair Quinto - tokinmym2@gmail.com
+# Laravel API y Administrativo = Prueba Kiibo + Jair Quinto - tokinmym2@gmail.com
