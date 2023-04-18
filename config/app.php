@@ -243,6 +243,7 @@ return [
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Chatify' => Chatify\Facades\ChatifyMessenger::class,
 
 
 
